@@ -99,3 +99,8 @@ The project has now been reorganized and documented as a portfolio project to de
 **Meera Sahib Fathima Rinosa**
 MSc Computational Social Systems
 TU Graz
+
+## Copyright
+© 2026 Meera Sahib Fathima Rinosa. All rights reserved.
+This repository is provided for portfolio and educational review purposes.
+No permission is granted to reproduce, distribute, modify, or commercially use the source code without prior written permission.
