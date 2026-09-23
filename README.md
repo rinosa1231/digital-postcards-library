@@ -82,11 +82,19 @@ digital-postcards-library/
 └── .gitignore
 
 ## Dataset
+## Dataset
+
 The original project contains approximately 10,600 postcard images and associated metadata.
 
 The postcard image collection and large generated feature files are not included in this public GitHub repository because of their size and dataset/distribution considerations.
 
-The application therefore requires the original project data files to be available locally.
+### Running the Application
+
+The current GitHub repository is intended primarily for portfolio and code review purposes.
+
+The complete original dataset and generated feature files are required to run the application with the full postcard collection, but they are not included in this public repository.
+
+The application can therefore be reviewed through the source code, project documentation, and application screenshots provided in this repository.
 
 ## Project Background
 This project was independently designed and developed as part of an academic project.
@@ -97,8 +105,6 @@ The project has now been reorganized and documented as a portfolio project to de
 
 ## Author
 **Meera Sahib Fathima Rinosa**
-MSc Computational Social Systems
-TU Graz
 
 ## Copyright
 © 2026 Meera Sahib Fathima Rinosa. All rights reserved.
