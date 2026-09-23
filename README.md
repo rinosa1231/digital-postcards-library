@@ -2,6 +2,9 @@
 
 A Flask-based digital postcard library that combines computer vision, semantic search, clustering, and geospatial visualization to explore a large collection of historical postcards.
 
+## Application Preview
+![Digital Postcards Library](screenshots/main-page.png)
+
 ## Project Overview
 
 This project provides an interactive web application for exploring approximately 10,600 digital postcard images together with their metadata.
