@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cluster Results</title>
+        <style>
+            body{
+                font-family: Arial;
+                background:#e6f2ff;
+                text-align:center;
+            }
+            .gallery{
+                display:flex;
+                flex-wrap:wrap;
+                gap: 20px;
+                justify-content:center;
+
+            }
+            .card{
+                background: white;
+                width: 200px;
+                padding:8px;
+                border-radius:10px;
+                box-shadow:0 2px 8px rgba(0,0,0,0.12);
+                transition:0.3s;
+                text-align: center;
+            }
+            .card:hover{
+                transform:translateY(-5px);
+            }
+            .outlier-card {
+                border: 4px solid red;
+                background: #fff5f5;
+                position: relative;
+            }
+
+            .outlier-badge {
+                background: red;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-size: 11px;
+                font-weight: bold;
+                display: inline-block;
+                margin-bottom: 6px;
+            }
+
+            .card img{
+                width:100%;
+                height:160px;
+                object-fit:cover;
+                border-radius:8px;
+
+            }
+            .card p {
+                font-size: 12px;
+                margin: 4px 0;
+                font-weight: normal;
+            }
+            .back-btn{
+                display:inline-block;
+                margin-bottom:20px;
+                padding:10px 20px;
+                background:#0077cc;
+                color:white;
+                text-decoration:none;
+                border-radius:6px;
+            }
+            .back-btn:hover{
+                background:#005fa3;
+
+            }
+            #loadMoreBtn{
+                padding:12px 24px;
+                border:none;
+                background:#0077cc;
+                color:white;
+                border-radius:6px;
+                cursor:pointer;
+                font-size:15px;
+            }
+            #loadMoreBtn:hover{
+                background:#005fa3;
+            }
+        </style>
+
+    </head>
+
+    <body>
+    <h1>{{ cluster_names[selected_cluster] }}</h1>
+    <a href="/" class="back-btn">← Back to Library</a>
+    <a href="{{ url_for('show_map', cluster=selected_cluster) }}"
+        class="back_btn">
+        🌍 View This Cluster on Map
+    </a>
+    <p>
+        Showing {{ results|length }} of {{ total_results}} postcards
+    </p>
+
+    
+    <div class="gallery">
+        {% for item in results %}
+        <div class="card {% if item.outlier %}outlier-card{% endif %}">
+            {% if item.outlier %}
+                <div class="outlier-badge">Long Travel Time</div>
+        {% endif %}
+
+        <a href="{{ url_for('journey_map', image_name=item.name) }}">
+                <img src="{{ url_for('static', filename='images/' + item.name)}}">
+        </a>
+        <p><b>From:</b> {{ item.origin }} ({{ item.origin_city }})</p>
+        <p><b>To:</b> {{ item.destination }} ({{ item.receiving_city }})</p>
+        <p><b>Time:</b> {{ item.time }} days</p>
+        <p><b>Sent:</b> {{ item.date_sent }}</p>
+        <p><b>Received:</b> {{ item.date_received }}</p>
+        <p><b>Distance:</b> {{ item.distance }} km</p>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if has_more %}
+    <div style ="text-align:center;margin:40px 0;">
+        <a href="{{ url_for(
+            'clusters',
+            cluster=selected_cluster,
+            page=page+1
+        )}}">
+            <button id="loadMoreBtn">
+                Load More
+            </button>
+    
+        </a>
+
+    </div>
+    {% endif %}
+    </body>
+</html>
